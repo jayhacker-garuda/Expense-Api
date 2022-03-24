@@ -23,4 +23,4 @@ Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.all
 Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
 Route::get('/expenses/show/{expense}', [ExpenseController::class, 'show'])->name('expenses.show');
 Route::post('/expenses/update', [ExpenseController::class, 'update'])->name('expenses.update');
-Route::post('/expenses/delete', [ExpenseController::class, 'destory'])->name('expenses.destroy');
+Route::post('/expenses/delete', [ExpenseController::class, 'destroy'])->name('expenses.destroy');

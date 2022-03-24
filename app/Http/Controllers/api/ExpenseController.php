@@ -40,10 +40,10 @@ class ExpenseController extends Controller
             'amount' => 'required',
             'description' => 'required' //optional if you want this to be required
         ]);
-        $expense = Expense::find($request->id());
-        $expense->name = $request->name();
-        $expense->amount = $request->amount();
-        $expense->description = $request->description();
+        $expense = Expense::find($request->id);
+        $expense->name = $request->name;
+        $expense->amount = $request->amount;
+        $expense->description = $request->description;
         $expense->save();
 
         return response()->json([
@@ -54,8 +54,9 @@ class ExpenseController extends Controller
 
     public function destroy(Request $request)
     {
-        $expense = Expense::find($request->id());
-        $expense->delete();
+        // dd();
+        $expense = Expense::find($request->id)->delete();
+
         return response()->json([
             'message' => 'expense deleted'
         ]);
