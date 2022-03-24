@@ -33,13 +33,14 @@ class ExpenseController extends Controller
         return response()->json($expense);
     }
 
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'amount' => 'required',
             'description' => 'required' //optional if you want this to be required
         ]);
+        $expense = Expense::find($request->id());
         $expense->name = $request->name();
         $expense->amount = $request->amount();
         $expense->description = $request->description();
@@ -51,8 +52,9 @@ class ExpenseController extends Controller
         ]);
     }
 
-    public function destroy(Expense $expense)
+    public function destroy(Request $request)
     {
+        $expense = Expense::find($request->id());
         $expense->delete();
         return response()->json([
             'message' => 'expense deleted'
